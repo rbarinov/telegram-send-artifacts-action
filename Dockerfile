@@ -15,4 +15,4 @@ RUN dotnet publish "TelegramSendArtifactsAction.csproj" -c Release -o /app/publi
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "TelegramSendArtifactsAction.dll"]
+ENTRYPOINT ["dotnet", "/app/TelegramSendArtifactsAction.dll"]
