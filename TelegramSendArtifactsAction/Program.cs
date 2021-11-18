@@ -55,7 +55,7 @@ namespace TelegramSendArtifactsAction
 
 version code <code>{options.VersionCode}</code>
 
-<code>{options.CommitHash}</code>
+{options.CommitHash}
 " + commitMessage;
 
                         media.ParseMode = ParseMode.Html;
