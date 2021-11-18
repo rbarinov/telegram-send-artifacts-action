@@ -1,0 +1,48 @@
+name: 'Telegram Send Artifacts Action'
+description: 'Send a group message with optional multiple files and commit & trigger data'
+inputs:
+  bot-key:
+    required: true
+    descrpition: 'telegram bot credentials'
+  chat-id:
+      required: true
+      descrpition: 'telegram target chat id'
+  event:
+    required: true
+    descrpition: 'an event which triggered an artifact build to specify in a message'
+  source:
+    required: true
+    descrpition: 'repository which produced atrifacts name to specify in a messaage'
+  ref:
+    required: true
+    descrpition: 'branch or tag value to specify in a message'
+  version-code:
+    required: true
+    descrpition: 'artifact version (e.g. apk version with code or build number) to specify in a message'
+  commit-hash:
+    required: true
+    descrpition: 'commit hash which produces atrifacts to specify in a message'
+  files:
+    required: true
+    descrpition: 'space separated file paths to attach to a message'
+outputs:
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - bot-key
+    - ${{ inputs.bot-key }}
+    - chat-id
+    - ${{ inputs.chat-id }}
+    - event
+    - ${{ inputs.event }}
+    - source
+    - ${{ inputs.source }}
+    - ref
+    - ${{ inputs.ref }}
+    - version-code
+    - ${{ inputs.version-code }}
+    - commit-hash
+    - ${{ inputs.commit-hash }}
+    - files
+    - ${{ inputs.files }}
