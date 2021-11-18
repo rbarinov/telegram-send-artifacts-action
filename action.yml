@@ -26,6 +26,8 @@ inputs:
     required: true
     descrpition: 'space separated file paths to attach to a message'
 outputs:
+  empty: # id of output
+    description: 'empty output'
 runs:
   using: 'docker'
   image: 'Dockerfile'
