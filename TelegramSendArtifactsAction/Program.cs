@@ -44,7 +44,6 @@ namespace TelegramSendArtifactsAction
                         var commitMessage = string.IsNullOrWhiteSpace(options.CommitMessage)
                             ? ""
                             : $@"
-
 <code>{options.CommitMessage}</code>
 ";
 
