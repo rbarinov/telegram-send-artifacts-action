@@ -32,19 +32,19 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - bot-key
+    - --bot-key
     - ${{ inputs.bot-key }}
-    - chat-id
+    - --chat-id
     - ${{ inputs.chat-id }}
-    - event
+    - --event
     - ${{ inputs.event }}
-    - source
+    - --source
     - ${{ inputs.source }}
-    - ref
+    - --ref
     - ${{ inputs.ref }}
-    - version-code
+    - --version-code
     - ${{ inputs.version-code }}
-    - commit-hash
+    - --commit-hash
     - ${{ inputs.commit-hash }}
-    - files
+    - --files
     - ${{ inputs.files }}
