@@ -21,9 +21,7 @@ namespace TelegramSendArtifactsAction
 
             options.Files = options.Files.SelectMany(e => e.Split())
                 .Where(e => !string.IsNullOrWhiteSpace(e))
-                .SelectMany(
-                    e => { return Directory.GetFiles(Directory.GetCurrentDirectory(), e); }
-                )
+                .SelectMany(e => Directory.GetFiles(Directory.GetCurrentDirectory(), e))
                 .Where(e => !string.IsNullOrWhiteSpace(e))
                 .OrderBy(e => e)
                 .ToArray();
@@ -43,6 +41,13 @@ namespace TelegramSendArtifactsAction
 
                         var media = new InputMediaDocument(new InputMedia(s, fileName));
 
+                        var commitMessage = string.IsNullOrWhiteSpace(options.CommitMessage)
+                            ? ""
+                            : $@"
+
+<code>{options.CommitMessage}</code>
+";
+
                         media.Caption = $@"
 {IconHelper.GetRandomIcon()}  <b>{options.Event}</b>
 
@@ -52,7 +57,7 @@ namespace TelegramSendArtifactsAction
 version code <code>{options.VersionCode}</code>
 
 <code>{options.CommitHash}</code>
-";
+" + commitMessage;
 
                         media.ParseMode = ParseMode.Html;
 
@@ -64,7 +69,9 @@ version code <code>{options.VersionCode}</code>
                     e =>
                         bot.SendMediaGroupAsync(
                                 options.ChatId,
-                                e.Select(c => c.media),
+                                e
+                                    .OrderBy(c => c.fileName)
+                                    .Select(c => c.media),
                                 true
                             )
                             .ToObservable()

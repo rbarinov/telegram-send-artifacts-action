@@ -23,6 +23,9 @@ namespace TelegramSendArtifactsAction
         [Option('h', "commit-hash", Required = true)]
         public string CommitHash { get; set; }
 
+        [Option('m', "commit-message", Required = false)]
+        public string CommitMessage { get; set; }
+
         [Option('c', "version-code", Required = true)]
         public string VersionCode { get; set; }
 

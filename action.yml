@@ -22,6 +22,9 @@ inputs:
   commit-hash:
     required: true
     descrpition: 'commit hash which produces atrifacts to specify in a message'
+  commit-message:
+    required: false
+    descrpition: 'commit message to specify'
   files:
     required: true
     descrpition: 'space separated file paths to attach to a message'
@@ -46,5 +49,7 @@ runs:
     - ${{ inputs.version-code }}
     - --commit-hash
     - ${{ inputs.commit-hash }}
+    - --commit-message
+    - ${{ inputs.commit-message }}
     - --files
     - ${{ inputs.files }}
