@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
@@ -17,6 +18,15 @@ namespace TelegramSendArtifactsAction
         private static async Task Job(Options options)
         {
             if (options == null) throw new ArgumentNullException(nameof(options));
+
+            options.Files = options.Files.SelectMany(e => e.Split())
+                .Where(e => !string.IsNullOrWhiteSpace(e))
+                .SelectMany(
+                    e => { return Directory.GetFiles(Directory.GetCurrentDirectory(), e); }
+                )
+                .Where(e => !string.IsNullOrWhiteSpace(e))
+                .OrderBy(e => e)
+                .ToArray();
 
             var bot = new TelegramBotClient(options.BotKey);
             await bot.SetWebhookAsync(string.Empty);
