@@ -7,9 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommandLineParser" Version="2.8.0"/>
-        <PackageReference Include="System.Reactive" Version="5.0.0"/>
-        <PackageReference Include="Telegram.Bot" Version="17.0.0"/>
+        <PackageReference Include="CommandLineParser" Version="2.8.0" />
+        <PackageReference Include="System.Reactive" Version="5.0.0" />
+        <PackageReference Include="Telegram.Bot" Version="17.0.0" />
+        <PackageReference Include="AWSSDK.S3" Version="3.7.3.23" />
     </ItemGroup>
 
 </Project>
