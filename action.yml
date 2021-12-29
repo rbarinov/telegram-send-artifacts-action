@@ -28,6 +28,19 @@ inputs:
   files:
     required: true
     descrpition: 'space separated file paths to attach to a message'
+  s3AccessKeyId:
+    required: false
+    descrpition: 's3AccessKeyId'
+  s3SecretAccessKey:
+    required: false
+    descrpition: 's3SecretAccessKey'
+  s3EndpointUrl:
+    required: false
+    descrpition: 's3EndpointUrl'
+  s3Space:
+    required: false
+    descrpition: 's3Space'
+
 outputs:
   empty: # id of output
     description: 'empty output'
@@ -53,3 +66,11 @@ runs:
     - ${{ inputs.commit-message }}
     - --files
     - ${{ inputs.files }}
+    - --s3AccessKeyId
+    - ${{ inputs.s3AccessKeyId }}
+    - --s3SecretAccessKey
+    - ${{ inputs.s3SecretAccessKey }}
+    - --s3EndpointUrl
+    - ${{ inputs.s3EndpointUrl }}
+    - --s3Space
+    - ${{ inputs.s3Space }}

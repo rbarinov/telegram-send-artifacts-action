@@ -31,5 +31,18 @@ namespace TelegramSendArtifactsAction
 
         [Option('f', "files", Required = true)]
         public IEnumerable<string> Files { get; set; }
+
+        [Option("s3AccessKeyId", Required = false)]
+        public string S3AccessKeyId { get; set; }
+
+        [Option("s3SecretAccessKey", Required = false)]
+
+        public string S3SecretAccessKey { get; set; }
+
+        [Option("s3EndpointUrl", Required = false)]
+        public string S3EndpointUrl { get; set; }
+
+        [Option("s3Space", Required = false)]
+        public string S3Space { get; set; }
     }
 }
