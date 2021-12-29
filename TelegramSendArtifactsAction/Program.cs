@@ -55,7 +55,7 @@ namespace TelegramSendArtifactsAction
                                     string fileLink = null;
 
                                     InputMediaDocument media = null;
-
+                                    
                                     if (s.Length > MaxFileSize)
                                     {
                                         var srcPath = Path.GetTempFileName();
@@ -112,6 +112,8 @@ version code <code>{options.VersionCode}</code>
                                                     + commitMessage;
 
                                     media.ParseMode = ParseMode.Html;
+                                    
+                                    Console.WriteLine($"file {fileName} size: {s.Length}, message length: {media.Caption.Length} ");
 
                                     return (fileName, path: e, media, stream: s);
                                 }
