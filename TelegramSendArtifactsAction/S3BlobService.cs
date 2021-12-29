@@ -98,6 +98,7 @@ namespace TelegramSendArtifactsAction
                     InputStream = fs,
                     BucketName = _space + "/" + directory,
                     Key = fileName,
+                    CannedACL = S3CannedACL.PublicRead
                 };
 
                 await fileTransferUtility.UploadAsync(fileTransferUtilityRequest);
