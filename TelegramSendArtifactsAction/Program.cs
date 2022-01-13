@@ -17,7 +17,8 @@ namespace TelegramSendArtifactsAction
     public static class Program
     {
         // private const long MaxFileSize = 47185920;
-        private const long MaxFileSize = 1024;
+        // private const long MaxFileSize = 1024;
+        private const long MaxFileSize = 1024 * 1024 * 40;
 
         private static async Task Job(Options options)
         {
